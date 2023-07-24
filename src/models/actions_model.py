@@ -1,6 +1,8 @@
+from dbm import _Database
 import sqlite3
 
-from database.db_config import DB_PATH
+from database.db_config import db_config
+
 
 class actions_model(object):
 
@@ -17,25 +19,22 @@ class actions_model(object):
         self.reason= reason
 
     def save_action(self):
-        connection = sqlite3.connect(DB_PATH)
+        connection= db_config.connect_db
         cursor = connection.cursor()
-               
         cursor.execute('INSERT INTO actions(deviceType,deviceId,locationId,checkTime,checkDuration,actionTime,light,volume,reason) VALUES (?,?,?,?,?,?,?,?)', 
                        (self.deviceType, self.deviceId, self.locationId,self.checkTime,self.checkDuration,self.actionTime,
                         self.light,self.volume,self.reason))        
         connection.commit()
-        
         cursor.close()
-        connection.close()
+        db_config.disconnect_db(connection)
         
         
     @staticmethod
     def get_actions():
         _all = []
-        
-        connection = sqlite3.connect(DB_PATH)
+        connection= db_config.connect_db
         cursor = connection.cursor()
-        
+    
         cursor.execute('SELECT * FROM actions')
         result = cursor.fetchall()
         
@@ -44,7 +43,7 @@ class actions_model(object):
             _all.append(actions_model(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9]))
         
         cursor.close()
-        connection.close()
+        db_config.disconnect_db(connection)
         
         return _all        
     
