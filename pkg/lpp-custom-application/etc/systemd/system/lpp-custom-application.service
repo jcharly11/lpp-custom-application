@@ -1,0 +1,17 @@
+[Unit]
+Description=LPP Custom Application
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/lpp-custom-application
+ExecStart=/usr/bin/bash -c "cd /root/lpp-custom-application && source ./venv/bin/activate && uvicorn main:app --host localhost --port 8001"
+SyslogIdentifier=lpp-custom-application
+RemainAfterExit=yes
+Restart=always
+RestartSec=60s
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
