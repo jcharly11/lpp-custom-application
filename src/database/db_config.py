@@ -15,7 +15,7 @@ TABLE_ACTIONS = """
     );
     """
 
-TABLE_ACTIONS = """
+TABLE_ACTIONS_EPCS = """
     CREATE TABLE IF NOT EXISTS actions_epcs(
 	      FOREIGN KEY (epc_id) REFERENCES actions (correlationId)
           [epc] TEXT

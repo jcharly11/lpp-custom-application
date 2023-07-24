@@ -53,5 +53,9 @@ class LogConfig(BaseModel):
         "uvicorn" : {
             "handlers": ["default"],
             "level": LOG_LEVEL
+        },
+        "database.db":{
+            "handlers": ["default"],
+            "level": LOG_LEVEL
         }
     }
