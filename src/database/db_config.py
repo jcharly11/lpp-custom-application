@@ -3,7 +3,8 @@ DB_PATH = '../database/' + DB_NAME
 
 TABLE_ACTIONS = """
     CREATE TABLE IF NOT EXISTS actions(
-        [correlationId] INTEGER PRIMARY KEY, 
+          [id] INTEGER PRIMARY KEY AUTOINCREMENT , 
+          [correlationId] INT, 
           [deviceType] TEXT,
           [deviceId] TEXT,
           [checkTime] TIMESTAMP,
@@ -17,7 +18,7 @@ TABLE_ACTIONS = """
 
 TABLE_ACTIONS_EPCS = """
     CREATE TABLE IF NOT EXISTS actions_epcs(
-	      FOREIGN KEY (epc_id) REFERENCES actions (correlationId)
+	      FOREIGN KEY (epc_id) REFERENCES actions (correlationId),
           [epc] TEXT
     );
     """

@@ -1,7 +1,9 @@
 class Action():
      
-     def __init__(self, deviceType, deviceId, locationId, checkTime, checkDuration, actionTime,
+     def __init__(self,correlationId, epcs, deviceType, deviceId, locationId, checkTime, checkDuration, actionTime,
                  light, volume, reason):
+        self.correlationId = correlationId,
+        self.epcs =  epcs
         self.deviceType = deviceType
         self.deviceId = deviceId
         self.locationId = locationId
