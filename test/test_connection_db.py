@@ -3,8 +3,9 @@ import sqlite3
 from database.db_config import DB_PATH
 
 
-class test_connection_db(unittest.TestCase):
-    def test_connection(self):
+class test_ConnectionDB(unittest.TestCase):
+
+    def test_Connection(self):
         expected = True
         actual = connectionDB()
         self.assertEqual(expected, actual)
