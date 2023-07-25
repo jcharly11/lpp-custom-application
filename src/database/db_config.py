@@ -1,5 +1,4 @@
 DB_NAME = 'lpp-database.db'
-DB_PATH = '../database/' + DB_NAME
 
 TABLE_ACTIONS = """
     CREATE TABLE IF NOT EXISTS actions(

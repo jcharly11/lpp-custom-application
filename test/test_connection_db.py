@@ -1,22 +1,18 @@
 import unittest
 import sqlite3
-from database.db_config import DB_PATH
 
+from src.database.db_config import DB_NAME
 
 class test_ConnectionDB(unittest.TestCase):
 
     def test_Connection(self):
         expected = True
-        actual = connectionDB()
-        self.assertEqual(expected, actual)
-
-
-def connectionDB(self):
-        connection = sqlite3.connect(DB_PATH)
+        connection = sqlite3.connect(DB_NAME)
+        actual= False 
         if connection is not None:
-            return True
-        else:
-            return False
+            actual=True
+
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':
